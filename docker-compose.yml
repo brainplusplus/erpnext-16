@@ -11,6 +11,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -27,6 +31,10 @@ services:
     deploy:
       restart_policy:
         condition: none
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     entrypoint:
       - bash
       - -c
@@ -62,6 +70,10 @@ services:
     deploy:
       restart_policy:
         condition: none
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -97,6 +109,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
@@ -124,6 +140,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - nginx-entrypoint.sh
     environment:
@@ -151,6 +171,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - bench
       - worker
@@ -172,6 +196,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - bench
       - worker
@@ -186,6 +214,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     volumes:
       - redis-queue-data:/data
 
@@ -194,6 +226,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     volumes:
       - redis-cache-data:/data
 
@@ -209,6 +245,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - bench
       - schedule
@@ -228,6 +268,10 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      resources:
+        limits:
+          cpus: '4'
+          memory: 7G
     command:
       - node
       - /home/frappe/frappe-bench/apps/frappe/socketio.js
