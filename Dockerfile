@@ -9,16 +9,16 @@ RUN apt-get update && \
 USER frappe
 WORKDIR /home/frappe/frappe-bench
 
-# Install custom apps
-# Resolving dependencies and fetching the specific branches as required
-RUN bench get-app https://github.com/frappe/hrms --branch v16.4.8 && \
-    bench get-app https://github.com/frappe/crm --branch v1.66.2 && \
-    bench get-app https://github.com/frappe/lms --branch v2.52.0 && \
-    bench get-app https://github.com/frappe/helpdesk --branch v1.22.1 && \
-    bench get-app https://github.com/frappe/meet --branch main && \
-    bench get-app https://github.com/frappe/drive --branch v0.3.0 && \
-    bench get-app https://github.com/frappe/waba_integration --branch main && \
-    bench get-app https://github.com/ERPGulf/changai --branch main
+# Install custom apps with --resolve-deps and --skip-assets
+# We skip building assets per-app to prevent intermediate yarn failures and OOM errors
+RUN bench get-app https://github.com/frappe/hrms --branch v16.4.8 --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/crm --branch v1.66.2 --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/lms --branch v2.52.0 --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/helpdesk --branch v1.22.1 --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/meet --branch main --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/drive --branch v0.3.0 --resolve-deps --skip-assets && \
+    bench get-app https://github.com/frappe/waba_integration --branch main --resolve-deps --skip-assets && \
+    bench get-app https://github.com/ERPGulf/changai --branch main --resolve-deps --skip-assets
 
 # Build frontend assets for all apps
 RUN bench build --hard-link
