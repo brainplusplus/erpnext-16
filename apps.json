@@ -1,0 +1,10 @@
+[
+  { "url": "https://github.com/frappe/hrms", "branch": "v16.4.8" },
+  { "url": "https://github.com/frappe/crm", "branch": "v1.66.2" },
+  { "url": "https://github.com/frappe/lms", "branch": "v2.52.0" },
+  { "url": "https://github.com/frappe/helpdesk", "branch": "v1.22.1" },
+  { "url": "https://github.com/frappe/meet", "branch": "main" },
+  { "url": "https://github.com/frappe/drive", "branch": "v0.3.0" },
+  { "url": "https://github.com/frappe/waba_integration", "branch": "main" },
+  { "url": "https://github.com/ERPGulf/changai", "branch": "main" }
+]
