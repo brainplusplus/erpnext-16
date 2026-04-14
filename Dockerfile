@@ -3,7 +3,7 @@ FROM frappe/erpnext:v16.13.3
 USER root
 # Install common missing build dependencies just in case Python packages need compilation
 RUN apt-get update && \
-    apt-get install -y gcc g++ make git && \
+    apt-get install -y gcc g++ make git libffi-dev python3-dev pkg-config libssl-dev && \
     rm -rf /var/lib/apt/lists/*
 
 USER frappe
