@@ -34,10 +34,28 @@ EasyPanel secara pintar akan:
 
 > **Catatan Waktu Deploy:** Karena Frappe Framework memerlukan proses cloning, pip packages, dan compiling aset UI, deployment startup Docker build untuk yang pertama kalinya dapat memakan waktu hingga **10-20 Menit** bergantung pada resource EasyPanel Anda.
 
+## 🚀 Opsi Deployment Cepat (Pre-built Image)
+
+Jika Anda tidak ingin melakukan proses *build image* dari awal yang memakan waktu (baik di server lokal, VPS lain, maupun EasyPanel), Anda bisa menggunakan konfigurasi spesifik yaitu `docker-compose.hub.yml`.
+
+File komposisi alternatif ini tidak menggunakan instruksi `build`, melainkan akan langsung melakukan proses *pull image* terbaru dari registry public / private.
+
+**Cara Menjalankan Secara Cepat:**
+```bash
+# Secara otomatis pull dari registry (brainplusplus/erpnext-16:latest)
+docker-compose -f docker-compose.hub.yml -p asahi_erp up -d
+```
+Jika Anda ingin menentukan tag versi khusus, Anda dapat mengekspor environment *(Universal Build)*:
+```bash
+$env:IMAGE_TAG="v2" # Pada Powershell
+docker-compose -f docker-compose.hub.yml -p asahi_erp up -d
+```
+
 ## 🛠 File Struktur Repositori
 
 - `Dockerfile`: File arsitektur custom build berbasis pada custom apps.
-- `docker-compose.yml`: Definisi service yang melacak seluruh infrastruktur network (Frappe Backend, Worker, Scheduler, MariaDB, Redis, dll).
+- `docker-compose.yml`: (Opsi Build Lokal) Definisi service yang membuild custom infrastruktur dari source code.
+- `docker-compose.hub.yml`: (Opsi Siap Pakai) Definisi service yang mengambil *image* ditarik langsung dari Docker Hub.
 - `apps.json`/`build.sh`: File helper opsional jika Anda ingin me-rebuild secara lokal (tidak digunakan langsung oleh EasyPanel auto-builder, tapi berguna sebagai track list dependency).
 - `fix/`: Catatan rekam jejak revisi setup.
 
