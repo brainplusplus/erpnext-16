@@ -15,7 +15,7 @@ RUN bench get-app https://github.com/frappe/hrms --branch v16.4.8 --skip-assets 
     bench get-app https://github.com/frappe/crm --branch v1.66.2 --skip-assets && \
     bench get-app https://github.com/frappe/lms --branch v2.52.0 --skip-assets && \
     bench get-app https://github.com/frappe/helpdesk --branch v1.22.1 --skip-assets && \
-    bench get-app https://github.com/frappe/meet --branch main --skip-assets && \
+    bench get-app https://github.com/frappe/meet --branch develop --skip-assets && \
     bench get-app https://github.com/frappe/drive --branch v0.3.0 --skip-assets && \
     bench get-app https://github.com/frappe/waba_integration --branch main --skip-assets && \
     bench get-app https://github.com/ERPGulf/changai --branch main --skip-assets
