@@ -117,10 +117,10 @@ services:
       - db
       - redis-cache
       - redis-queue
-    ports:
-      - "8000:8000"
-      - "8081:8080"
-      - "9000:9000"
+    # ports:
+    #   - "8000:8000"
+    #   - "8081:8080"
+    #   - "9000:9000"
     deploy:
       restart_policy:
         condition: on-failure
